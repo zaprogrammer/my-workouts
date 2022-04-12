@@ -1,0 +1,28 @@
+import { CompositeNavigationProp, RouteProp } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import {DrawerNavigationProp} from "@react-navigation/drawer";
+
+export interface AuthNavigationProps<RouteName extends keyof AuthenticationRoutes> {
+    navigation: CompositeNavigationProp<StackNavigationProp<AuthenticationRoutes, RouteName>,
+        DrawerNavigationProp<AppRoutes, 'Home'>>;
+    route: RouteProp<AuthenticationRoutes, RouteName>;
+}
+
+export interface HomeNavigationProps<RouteName extends keyof HomeRoutes> {
+    navigation: DrawerNavigationProp<AppRoutes, 'Home'>;
+    route: RouteProp<HomeRoutes, RouteName>;
+}
+
+export type AppRoutes = {
+    Authentication: undefined;
+    Home: undefined;
+};
+
+export type AuthenticationRoutes = {
+    Login: undefined;
+}
+
+export type HomeRoutes = {
+    Home: undefined;
+    WorkoutSession: undefined;
+};
